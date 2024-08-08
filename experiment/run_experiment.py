@@ -138,7 +138,7 @@ class Experiment:
         
         with open("experiment/results/" + file_name, "w") as file:
             file.write(contents_str)
-           
+
     def extract_time(self, result: str) -> float:
         result_array = result.split("\n");
         for line in result_array:
@@ -171,7 +171,7 @@ class Experiment:
         logging.info("Results saved in file {}".format(name))
         
     def run_mpc_protocol(self) -> str:
-        """Runs the MPC protocol of the compiled algorithm using MP-SDPZ."""
+        """Runs the MPC protocol of the compiled algorithm using MP-SPDZ."""
 
         logging.info(
             "Running protocol {} for algorithm {}".format(self.protocol, self.algorithm)
@@ -205,7 +205,7 @@ class Experiment:
                 )
 
     def compile_mpc_file(self) -> None:
-        """Compiles the .mpc file using MP-SDPZ."""
+        """Compiles the .mpc file using MP-SPDZ."""
 
         logging.info("Compiling MPC file {}".format(self.algorithm))
         path_mpc_file = os.path.join("..", self.algorithm)
@@ -217,7 +217,7 @@ class Experiment:
         elif self.protocol in field_protocols:
             domain = "-F"
         
-        # Set the ring size for the greedy aproach in a different way given the
+        # Set the ring size for the greedy approach in a different way given the
         # use of fixed-point arithmetic.    
         ring_size = "64"
         if self.algorithm == "mpc_knapsack_auction/knapsack_auction.mpc":
@@ -284,7 +284,7 @@ class NetworkController:
             stderr=subprocess.STDOUT,
         )
         stop_shaper_result.check_returncode()
-        logging.info("Shapper successfully stopped.")
+        logging.info("Shaper successfully stopped.")
 
 
 if __name__ == "__main__":
